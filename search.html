@@ -35,21 +35,6 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script>
-
-        const fileReader = new FileReader();
-
-        // set a function to be executed when the file is loaded
-        fileReader.onload = function (event) {
-            // read the first line of the file
-            const firstLine = event.target.result.split('\n')[0];
-
-            // execute the callback function with the first line as an argument
-            callback(firstLine);
-        };
-
-        // read the file
-        fileReader.readAsText(file);
-
         $(document).ready(function () {
             // When the search form is submitted
             $("#search-form").submit(function (event) {
@@ -60,41 +45,27 @@
                 var query = $("#search-input").val();
 
                 // Make the API request
-                fetch("https://perenual.com/api/species-list?&key={KEY}&q=" + query).then(response => {
-                    return response.json();
-                }).then(json => {
-                    console.log(json)
-                })
+                fetch("https://perenual.com/api/species-list?&key={KEY}&q=" + query)
+                    .then(response => response.json())
+                    .then(response => {
+                        // Clear previous search results
+                        $("#results").empty();
 
-                // // Loop through the data and create a card for each species
-                // $.each(response.data, function (i, species) {
-                //     var card = $("<div>", {
-                //         "class": "card",
-                //         "style": "width: 18rem;"
-                //     });
-                //     var cardBody = $("<div>");
-                //     var name = $("<h5>", {
-                //         "class": "card-title",
-                //         "text": species.name
-                //     });
-                //     var scientificName = $("<h6>", {
-                //         "class": "card-subtitle mb-2 text-muted",
-                //         "text": species.scientific_name
-                //     });
-                //     var description = $("<p>", {
-                //         "class": "card-text",
-                //         "text": species.description
-                //     });
+                        console.log(response.data);
 
-                //     cardBody.append(name);
-                //     cardBody.append(scientificName);
-                //     cardBody.append(description);
-                //     card.append(cardBody);
+                        Object.keys(response.data).forEach(function (key) {
+                            console.log(response.data[key].common_name)
 
-                //     $("#results").append(card);
-                // });
+                            $("#results").append("<h2>" + response.data[key].common_name + "</h2>");
+                            // $("#results").append("<p>" + plant.description + "</p>");
+                            $("#results").append("<p>Watering: " + plant.watering + "</p>");
+                            // $("#results").append("<p>Light: " + plant.light + "</p>");
+                            $("#results").append("<hr>");
+                        })
+                    });
             });
         });
+
 
 
     </script>
