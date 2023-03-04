@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantCare - Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>PlantCare: Species Search</h1>
+        <form id="search-form">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search for your plants" id="search-input">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+        <div id="results"></div>
+    </div>
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+
+        const fileReader = new FileReader();
+
+        // set a function to be executed when the file is loaded
+        fileReader.onload = function (event) {
+            // read the first line of the file
+            const firstLine = event.target.result.split('\n')[0];
+
+            // execute the callback function with the first line as an argument
+            callback(firstLine);
+        };
+
+        // read the file
+        fileReader.readAsText(file);
+
+        $(document).ready(function () {
+            // When the search form is submitted
+            $("#search-form").submit(function (event) {
+                // Prevent the form from submitting normally
+                event.preventDefault();
+
+                // Get the search query from the input
+                var query = $("#search-input").val();
+
+                // Make the API request
+                fetch("https://perenual.com/api/species-list?&key={KEY}&q=" + query).then(response => {
+                    return response.json();
+                }).then(json => {
+                    console.log(json)
+                })
+
+                // // Loop through the data and create a card for each species
+                // $.each(response.data, function (i, species) {
+                //     var card = $("<div>", {
+                //         "class": "card",
+                //         "style": "width: 18rem;"
+                //     });
+                //     var cardBody = $("<div>");
+                //     var name = $("<h5>", {
+                //         "class": "card-title",
+                //         "text": species.name
+                //     });
+                //     var scientificName = $("<h6>", {
+                //         "class": "card-subtitle mb-2 text-muted",
+                //         "text": species.scientific_name
+                //     });
+                //     var description = $("<p>", {
+                //         "class": "card-text",
+                //         "text": species.description
+                //     });
+
+                //     cardBody.append(name);
+                //     cardBody.append(scientificName);
+                //     cardBody.append(description);
+                //     card.append(cardBody);
+
+                //     $("#results").append(card);
+                // });
+            });
+        });
+
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</body>
+
+</html>
