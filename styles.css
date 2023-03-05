@@ -1,5 +1,5 @@
 h1 {
-    padding: 2rem;
+    padding-top: 6rem;
     text-align: center;
 }
 
@@ -14,4 +14,8 @@ img {
 
 #results {
     text-align: center;
+}
+
+#search {
+    padding-top: 1.5rem;
 }
