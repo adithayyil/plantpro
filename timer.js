@@ -14,39 +14,41 @@ let sound2 = sound.cloneNode(true);
 
 function displaySeconds() {
   if (seconds < 10) {
-      secondsTimer.value = "0" + seconds;
-    }
-    else {
-      secondsTimer.value = seconds;
-    }
+    secondsTimer.value = "0" + seconds;
+  }
+  else {
+    secondsTimer.value = seconds;
+  }
 }
 
 function playSound2() {
-    sound2.play();
+  sound2.play();
 }
 
 function startTimer() {
   if (timerStarted) {
     return;
   }
+  const userEmail = document.getElementById("email").value;
+  const plant = document.getElementById("plantName").value;
   timerStarted = true;
-  intervalID = setInterval(function(){
+  intervalID = setInterval(function () {
     hours = parseInt(hoursTimer.value);
     minutes = parseInt(minutesTimer.value);
     seconds = parseInt(secondsTimer.value);
 
     if (seconds > 59 || seconds < 0 || isNaN(seconds)) {
       s = seconds
-      if(hours > 0 && minutes == 0) {
+      if (hours > 0 && minutes == 0) {
         seconds = 59
         prevSeconds = seconds
       }
       else {
-      seconds = 0
-      prevSeconds = seconds
+        seconds = 0
+        prevSeconds = seconds
       }
 
-      if(s > 59) {
+      if (s > 59) {
         seconds = 60
         prevSeconds = seconds
       }
@@ -59,20 +61,29 @@ function startTimer() {
     }
 
     if (minutes < 0 || isNaN(minutes)) {
-      if(hours > 0) {
-        hours-=1
+      if (hours > 0) {
+        hours -= 1
         hoursTimer.value = hours;
         minutes = 60
         minutesTimer.value = minutes;
       }
       else {
-      minutes = 0
-      minutesTimer.value = minutes;
+        minutes = 0
+        minutesTimer.value = minutes;
       }
     }
     if (seconds == 0) {
       seconds = 60;
       if (minutes == 0 && hours == 0) {
+        Email.send({
+          SecureToken: "c4f1c637-a2d7-4e55-bca5-69c332445b6e",
+          To: userEmail,
+          From: "plantproo@gmail.com",
+          Subject: "Don't forget to water your plant!",
+          Body: "Hey! Your " + plant + " is ready to be watered!"
+        }).then(
+          message => alert("Timer Done, Reminder Email Sent!")
+        );
         resetTimer();
         sound.play();
         setTimeout(playSound2, 1000);
@@ -84,8 +95,8 @@ function startTimer() {
       }
     }
 
-    if(minutes == 0 && seconds == 0) {
-      hours-=1;
+    if (minutes == 0 && seconds == 0) {
+      hours -= 1;
       hoursTimer.value = hours
       minutes = 59
       seconds = 59
@@ -100,7 +111,7 @@ function startTimer() {
   messageTimer.placeholder = "Timer started...";
 }
 
-function stopTimer(message=null) {
+function stopTimer(message = null) {
   timerStarted = false;
   clearInterval(intervalID);
   if (message) {
@@ -113,7 +124,7 @@ function stopTimer(message=null) {
   minutes = minutesTimer.value;
 }
 
-function resetTimer(message=null) {
+function resetTimer(message = null) {
   timerStarted = false;
   clearInterval(intervalID);
   if (message) {

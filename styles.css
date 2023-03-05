@@ -13,6 +13,7 @@ img {
 }
 
 #results {
+    margin: 0 auto;
     text-align: center;
 }
 

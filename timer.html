@@ -8,6 +8,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
   <style>
     .container {
       margin-top: 80px;
@@ -51,6 +52,14 @@
     <h2 class="text-center">Set the timer and start it!</h2>
     <div class="row justify-content-center">
       <div class="col-md-6">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+          <label for="plantName">Plant Name:</label>
+          <input type="text" class="form-control" id="plantName">
+        </div>
         <div class="input-group mb-3">
           <span class="input-group-text">Hours</span>
           <input id="hoursTimer" type="number" class="form-control" value="0" min="0" max="300">
