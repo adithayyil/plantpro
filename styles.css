@@ -11,3 +11,7 @@ p {
 img {
     padding-bottom: 1rem;
 }
+
+#results {
+    text-align: center;
+}
