@@ -69,7 +69,6 @@ $(document).ready(function () {
                     $("#results").append("<p> Cycle: " + response.data[key].cycle + "</p>");
                     $("#results").append("<p> Watering: " + response.data[key].watering + "</p>");
                     $("#results").append("<p> Sunlight: " + response.data[key].sunlight[0] + "</p>");  // TODO: Loop through array
-                    $("#results").append("<button type='button' class='btn btn-success'> Watering Guide/Timer" + "</button> ");
 
                     $("#results").append("<hr>");
 
