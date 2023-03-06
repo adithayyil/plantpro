@@ -1,3 +1,3 @@
-# Shaurya-Sareen---HDSB-2023-Hackathon-Submission
+# Adithya-Thayyil---HDSB-2023-Hackathon-Submission
 
 # PlantPro
