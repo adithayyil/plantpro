@@ -9,7 +9,7 @@ Created by: Adithya Thayyil, Shaurya Sareen, Sony Haggag
 ### Use it here!
 https://plantpro.netlify.app/
 
-## Alternative Use
+### Alternative Use
 Alternatively, you can clone this repo and use it locally by opening "index.html" on any browser
 
 ## Why PlantPro?
