@@ -7,9 +7,9 @@ Created by: Adithya Thayyil, Shaurya Sareen, Sony Haggag
 ## User Guide
 
 ### Use it here!
-https://plantpro.netlify.app/
+https://plantpro.netlify.app/ (open it on a computer for better experience)
 
-### Alternative Use
+### Alternative Method
 Alternatively, you can clone this repo and use it locally by opening "index.html" on any browser
 
 ## Why PlantPro?
