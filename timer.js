@@ -12,6 +12,8 @@ let timerStarted = false;
 let sound = new Audio("https://raw.githubusercontent.com/raul23/web-projects/main/projects/timer_bootstrap/audio/ding-ding-sound-effect.mp3");
 let sound2 = sound.cloneNode(true);
 
+let api = "Frequent"; // pull here (frequent or average etc.)
+
 function displaySeconds() {
   if (seconds < 10) {
     secondsTimer.value = "0" + seconds;
@@ -49,7 +51,7 @@ function startTimer() {
       }
 
       if (s > 59) {
-        seconds = 60
+        seconds = 59
         prevSeconds = seconds
       }
       displaySeconds();
@@ -60,20 +62,8 @@ function startTimer() {
       hoursTimer.value = hours;
     }
 
-    if (minutes < 0 || isNaN(minutes)) {
-      if (hours > 0) {
-        hours -= 1
-        hoursTimer.value = hours;
-        minutes = 60
-        minutesTimer.value = minutes;
-      }
-      else {
-        minutes = 0
-        minutesTimer.value = minutes;
-      }
-    }
     if (seconds == 0) {
-      seconds = 60;
+      seconds = 59;
       if (minutes == 0 && hours == 0) {
         Email.send({
           SecureToken: "c4f1c637-a2d7-4e55-bca5-69c332445b6e",
@@ -91,6 +81,19 @@ function startTimer() {
       }
       else {
         minutes -= 1;
+        minutesTimer.value = minutes;
+      }
+    }
+
+    if (minutes < 0 || isNaN(minutes)) {
+      if (hours > 0) {
+        hours -= 1
+        hoursTimer.value = hours;
+        minutes = 59
+        minutesTimer.value = minutes;
+      }
+      else {
+        minutes = 0
         minutesTimer.value = minutes;
       }
     }
@@ -133,14 +136,28 @@ function resetTimer(message = null) {
   else {
     messageTimer.placeholder = "Timer resetted!";
   }
-  hoursTimer.value = 10;
-  minutesTimer.value = 10;
-  secondsTimer.value = "10";
+
+  if (api = "Frequent") {
+    hoursTimer.value = 1;
+    minutesTimer.value = 0;
+    secondsTimer.value = "0";
+  }
+  else if (api = "Average") {
+    hoursTimer.value = 3;
+    minutesTimer.value = 0;
+    secondsTimer.value = "0";
+  }
+  else if (api = "Little") {
+    hoursTimer.value = 5;
+    minutesTimer.value = 0;
+    secondsTimer.value = "0";
+  }
+
+  // add more api types (ie: less frequent etc.) and change values if needed
+
   hours = hoursTimer.value
   minutes = minutesTimer.value;
-  seconds = 10;
+  seconds = 0; // change value of seconds here if needed here too (and above with secondTimer.value)
 
   startTimer()
 }
-
-// stop taking letters as an input
