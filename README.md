@@ -1,8 +1,8 @@
-# Adithya-Thayyil---HDSB-2023-Hackathon-Submission
+# PlantPro - HDSB-2023-Hackathon-Submission
 
 # [PlantPro](https://docs.google.com/presentation/d/1K3lf7PrgwqkmQzcLRTsUaJ-GibS75Gc8y-n-lVP8dy4/edit?usp=sharing)
 
-Created by: Adithya Thayyil, Shaurya Sareen, Sony Haggag
+Created by: Adi Thayyil, Shaurya Sareen, Sony Haggag
 
 ## User Guide
 
