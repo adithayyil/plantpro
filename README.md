@@ -25,3 +25,4 @@ Find the perfect plant for your garden by searching through our database of vari
 ## Todo 
 - [ ] Rewrite in React
 - [ ] Better UI experience in mobile
+- [ ] Fix major timer bugs & make use of cookies for keeping track of time
