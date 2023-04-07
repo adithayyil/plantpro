@@ -1,6 +1,6 @@
 # PlantPro - HDSB-2023-Hackathon-Submission
 
-# [PlantPro](https://docs.google.com/presentation/d/1K3lf7PrgwqkmQzcLRTsUaJ-GibS75Gc8y-n-lVP8dy4/edit?usp=sharing)
+# [PlantPro](https://plantpro.netlify.app/)
 
 Created by: Adi Thayyil, Shaurya Sareen, Sony Haggag
 
@@ -8,9 +8,6 @@ Created by: Adi Thayyil, Shaurya Sareen, Sony Haggag
 
 ### Use it here!
 https://plantpro.netlify.app/ (open it on a computer for better experience)
-
-### Alternative Method
-Alternatively, you can clone this repo and use it locally by opening "index.html" on any browser
 
 ## Why PlantPro?
 Find the perfect plant for your garden by searching through our database of various different plant species. Find out about different plant's cycles, watering, etc. And don't forget to use our plant watering timer to remind you to keep your plants healthy!
@@ -22,5 +19,9 @@ Find the perfect plant for your garden by searching through our database of vari
      - Plant Toxicity
      - Plant Cycle
      - Plant Watering
-     - Plant Sunglight
+     - Plant Sunlight
   - Easy-to-use timer which sends an email for watering reminders!
+
+## Todo 
+- [ ] Rewrite in React
+- [ ] Better UI experience in mobile
